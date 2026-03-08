@@ -92,6 +92,15 @@ img{
   overflow:hidden;
 }
 
+/* celebration shake */
+@keyframes celebrate{
+0%{transform:translateX(0)}
+25%{transform:translateX(-5px)}
+50%{transform:translateX(5px)}
+75%{transform:translateX(-5px)}
+100%{transform:translateX(0)}
+}
+
 </style>
 </head>
 <body>
@@ -150,7 +159,10 @@ img{
 <button id="yesBtn" onclick="sayYes()">Yes ❤️</button>
 <button id="noBtn" onmouseover="moveNo()">No</button>
 
-<h2 id="result" class="hidden">I knewwww it!! ❤️🎈</h2>
+<h1 id="result" class="hidden" style="font-size:40px;color:#ff4d6d">
+I KNEW YOU WOULD SAY YES 😭❤️
+</h1>
+
 </div>
 </section>
 
@@ -204,10 +216,47 @@ function moveNo(){
  btn.style.transform=`translate(${x}px,${y}px)`
 }
 
+/* LEGENDARY YES MOMENT */
 function sayYes(){
+
  document.getElementById('result').classList.remove('hidden')
+
+ heartExplosion()
  createBalloons()
- alert("She said YESSSS 😭❤️")
+
+ document.body.style.animation="celebrate 0.4s 3"
+
+ setTimeout(()=>{
+  alert("SHE SAID YESSS 😭❤️")
+ },1200)
+}
+
+function heartExplosion(){
+
+ for(let i=0;i<60;i++){
+   const heart=document.createElement('div')
+   heart.innerHTML="❤️"
+   heart.style.position="fixed"
+   heart.style.left="50%"
+   heart.style.top="50%"
+   heart.style.fontSize=(Math.random()*30+20)+"px"
+   heart.style.pointerEvents="none"
+
+   const x=(Math.random()-0.5)*1000
+   const y=(Math.random()-0.5)*800
+
+   heart.animate([
+     {transform:"translate(0,0)",opacity:1},
+     {transform:`translate(${x}px,${y}px)`,opacity:0}
+   ],{
+     duration:2000,
+     easing:"ease-out"
+   })
+
+   document.body.appendChild(heart)
+
+   setTimeout(()=>heart.remove(),2000)
+ }
 }
 
 function createBalloons(){

@@ -92,7 +92,6 @@ img{
   overflow:hidden;
 }
 
-/* celebration shake */
 @keyframes celebrate{
 0%{transform:translateX(0)}
 25%{transform:translateX(-5px)}
@@ -100,9 +99,9 @@ img{
 75%{transform:translateX(-5px)}
 100%{transform:translateX(0)}
 }
-
 </style>
 </head>
+
 <body>
 
 <audio id="music" loop preload="auto">
@@ -172,6 +171,7 @@ I KNEW YOU WOULD SAY YES 😭❤️
 
 const text="Happy Birthday Mahwifu 🎉❤️"
 let i=0
+
 function typeTitle(){
  if(i<text.length){
   document.getElementById("title").innerHTML+=text.charAt(i)
@@ -184,29 +184,27 @@ typeTitle()
 
 function start(){
 
-  const music = document.getElementById("music")
-  music.volume = 0.6
-  music.play().catch(()=>{
-   console.log("Autoplay blocked")
-  })
+ const music=document.getElementById("music")
+ music.volume=0.6
+ music.play().catch(()=>{console.log("Autoplay blocked")})
 
-  document.getElementById('story').classList.remove('hidden')
+ document.getElementById('story').classList.remove('hidden')
 
-  setTimeout(()=>{
-  document.getElementById('memories').classList.remove('hidden')
-  },1500)
+ setTimeout(()=>{
+ document.getElementById('memories').classList.remove('hidden')
+ },1500)
 
-  setTimeout(()=>{
-  document.getElementById('love').classList.remove('hidden')
-  },3000)
+ setTimeout(()=>{
+ document.getElementById('love').classList.remove('hidden')
+ },3000)
 
-  setTimeout(()=>{
-  document.getElementById('final').classList.remove('hidden')
-  },4500)
+ setTimeout(()=>{
+ document.getElementById('final').classList.remove('hidden')
+ },4500)
 
-  setTimeout(()=>{
-  document.getElementById('proposal').classList.remove('hidden')
-  },6000)
+ setTimeout(()=>{
+ document.getElementById('proposal').classList.remove('hidden')
+ },6000)
 }
 
 function moveNo(){
@@ -216,7 +214,7 @@ function moveNo(){
  btn.style.transform=`translate(${x}px,${y}px)`
 }
 
-/* LEGENDARY YES MOMENT */
+/* LEGENDARY YES */
 function sayYes(){
 
  document.getElementById('result').classList.remove('hidden')
@@ -225,47 +223,51 @@ function sayYes(){
  createBalloons()
 
  document.body.style.animation="celebrate 0.4s 3"
+}
 
- function heartExplosion(){
+/* HEART EXPLOSION */
+function heartExplosion(){
 
  for(let i=0;i<60;i++){
-   const heart=document.createElement('div')
-   heart.innerHTML="❤️"
-   heart.style.position="fixed"
-   heart.style.left="50%"
-   heart.style.top="50%"
-   heart.style.fontSize=(Math.random()*30+20)+"px"
-   heart.style.pointerEvents="none"
+  const heart=document.createElement('div')
+  heart.innerHTML="❤️"
+  heart.style.position="fixed"
+  heart.style.left="50%"
+  heart.style.top="50%"
+  heart.style.fontSize=(Math.random()*30+20)+"px"
+  heart.style.pointerEvents="none"
 
-   const x=(Math.random()-0.5)*1000
-   const y=(Math.random()-0.5)*800
+  const x=(Math.random()-0.5)*1000
+  const y=(Math.random()-0.5)*800
 
-   heart.animate([
-     {transform:"translate(0,0)",opacity:1},
-     {transform:`translate(${x}px,${y}px)`,opacity:0}
-   ],{
-     duration:2000,
-     easing:"ease-out"
-   })
+  heart.animate([
+   {transform:"translate(0,0)",opacity:1},
+   {transform:`translate(${x}px,${y}px)`,opacity:0}
+  ],{
+   duration:2000,
+   easing:"ease-out"
+  })
 
-   document.body.appendChild(heart)
+  document.body.appendChild(heart)
 
-   setTimeout(()=>heart.remove(),2000)
+  setTimeout(()=>heart.remove(),2000)
  }
 }
 
+/* BALLOONS */
 function createBalloons(){
  const container=document.getElementById('balloonContainer')
 
  for(let i=0;i<25;i++){
- const b=document.createElement('div')
- b.classList.add('balloon')
- b.style.left=Math.random()*100+'vw'
- b.style.animationDuration=(Math.random()*3+4)+'s'
- container.appendChild(b)
+  const b=document.createElement('div')
+  b.classList.add('balloon')
+  b.style.left=Math.random()*100+'vw'
+  b.style.animationDuration=(Math.random()*3+4)+'s'
+  container.appendChild(b)
  }
 }
 
+/* FLOATING HEARTS */
 function createHearts(){
  const heart=document.createElement('div')
  heart.classList.add('heart')
@@ -275,7 +277,7 @@ function createHearts(){
  heart.style.animationDuration=(Math.random()*4+5)+'s'
  document.body.appendChild(heart)
 
- setTimeout(()=>{heart.remove()},8000)
+ setTimeout(()=>heart.remove(),8000)
 }
 
 setInterval(createHearts,500)
@@ -284,4 +286,3 @@ setInterval(createHearts,500)
 
 </body>
 </html>
-
